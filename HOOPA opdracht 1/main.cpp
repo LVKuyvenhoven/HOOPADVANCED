@@ -3,10 +3,6 @@
 #include "Bankrekening.h"
 
 int main() {
-	int afschrijving;
-
-	afschrijving = 1;
-
 	Bankrekening rekening = Bankrekening();
 
 	Transactie transactie1 = Transactie(100, "21-11-16", 1);
