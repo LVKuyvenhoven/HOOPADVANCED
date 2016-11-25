@@ -13,7 +13,7 @@ int main() {
 
 	cout << " saldo=" << rekening.getSaldo() << endl;
 
-	if (afschrijving == 0) {
+	if (transactie1.getAfschrijving() == 0) {
 		rekening = rekening + transactie1;
 	}
 	else {

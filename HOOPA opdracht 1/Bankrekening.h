@@ -18,6 +18,8 @@ public:
 
 	Bankrekening operator-(const Transactie& transactie) const;
 
+	Bankrekening& operator=(const Bankrekening& rekening);
+
 private:
 	int saldo;
 	int historie;
