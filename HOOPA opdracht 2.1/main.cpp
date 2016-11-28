@@ -3,7 +3,7 @@
 #include "Bankrekening.h"
 
 int main() {
-	Bankrekening rekening = Bankrekening();
+	Bankrekening rekening = Bankrekening("Lennart's rekening");
 	rekening.put(0, 0);
 
 	Transactie transactie1 = Transactie(100, "21-11-16", 1);

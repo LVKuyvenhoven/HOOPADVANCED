@@ -1,22 +1,19 @@
 #pragma once
 
-#include <string>
-#include "Transactie.h"
-#include <vector>
-
 using namespace std;
+
+#include "Transactie.h"
+#include <vector>;
+#include <string>;
+#include <iostream>;
 
 class Bankrekening {
 public:
-	Bankrekening(int saldo = 0, int historie = 0);
+	Bankrekening(const string& name);
 
 	virtual ~Bankrekening();
 
-	void put(int saldo, int historie);
-
-	int getSaldo() const;
-
-	int getHistorie() const;
+	void put(int& saldos, int& historiën);
 
 	Bankrekening operator+(const Transactie& transactie) const;
 
@@ -27,6 +24,7 @@ public:
 	friend ostream& operator<<(ostream& os, Bankrekening& config);
 
 private:
-	int saldo;
-	int historie;
+	string name;
+	vector<int> saldos;
+	vector<int> historiën;
 };
