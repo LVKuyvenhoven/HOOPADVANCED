@@ -3,23 +3,24 @@
 
 using namespace std;
 
-string arrai[5] = { "Lennart", "Jelmer", "Martijn", "Els", "Job" };
+string listone[] = { "Lennart", "Jelmer", "Martijn", "Els", "Job" };
 
-float arrai[5] = { 20.1f, 13.5f, 18.4f, 46.7f, 44.6f };
+float listtwo[] = { 10.5f, 20.1f, 8.4f, 19.2f, 14.3f };
+
 
 template <typename T>
-T arrai[5] {
+void sort(T input[]) {
+	T temp;
 	for (int i = 0; i < 5; i++) {
-		if (arrai[i] < arrai[i + 1]) {
-			int temp = arrai[i];
-			arrai[i] = arrai[i + 1];
-			arrai[i + 1] = temp;
+		if (input[i] < input[i + 1]) {
+			temp = input[i];
+			input[i] = input[i + 1];
+			input[i + 1] = temp;
 		}
 	}
 }
 
 int main() {
-	cout << arrai[5] << endl;
-	cout << arrai[5] << endl;
-	return 0;
+	sort(listone);
+	sort(listtwo);
 }

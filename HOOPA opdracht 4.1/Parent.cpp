@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ostream>
 #include "Parent.h"
 
 Parent::Parent(string name) {

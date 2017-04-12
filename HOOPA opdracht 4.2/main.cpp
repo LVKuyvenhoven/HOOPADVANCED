@@ -12,6 +12,7 @@ int main() {
 	Collector<int> collectorInt;
 	for (int i: {1, 3, 17, 143, 9}) {
 		collectorInt.add(i);
+		collectorInt.pop();
 	}
 	dumpCollector(collectorInt);
 

@@ -2,27 +2,31 @@
 
 #include <vector>
 #include <iostream>
+#include <ostream>
+#include <string>
 
 using namespace std;
 
 template<typename T>
 class Collector {
-public:
-	Collector() {
-	}
-
-	ostream& operator<<(ostream& os, Collector& nm);
-
-	void add(T element) {
-		elements.push_back(element);
-	}
-
-	void dump() {
-		for (size_t i = 0; i < elements.size(); i++) {
-			cout << elements[i] << endl;
+	public:
+		Collector() {
 		}
-	}
 
-private:
-	vector<T> elements;
+		void add(T element) {
+			elements.push_back(element);
+		}
+
+		void pop() {
+			elements.pop_back();
+		}
+
+		void dump() {
+			for (int i = 0; i < elements.size(); i++) {
+				cout << elements[i] << endl;
+			}
+		}
+	
+	private:
+		vector<T> elements;
 };
