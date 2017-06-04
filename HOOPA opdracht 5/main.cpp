@@ -2,93 +2,43 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
-#include "Particle.h"
 #include <string>
 #include <numeric>
 
 using namespace std;
-
-bool isDead(Particle p) {
-	return !p.isAlive();
-}
-
-void dumpParticles(const string header, const vector<Particle>& particles) {
-	cout << header << endl;
-	for (int j = 0; j < particles.size(); ++j) {
-	}
-}
-
-
-//template voor som
-
-double sumtotal;
-
-template <typename T>
-void som(T input[]) {
-	for (int i = 0; i < 5; i++) {
-		sumtotal = sumtotal + input[i];
-	}
-}
-
-
-//template voor product
-
-double producttotal = 1;
-
-template <typename T>
-void product(T input[]) {
-	for (int i = 0; i < 5; i++) {
-		producttotal = producttotal * input[i];
-	}
-}
-
-
-//template voor gemiddelde
-
-double averagetotal;
-double result;
-int divider;
-
-template <typename T>
-void average(T input[]) {
-	for (int i = 0; i < 5; i++) {
-		averagetotal = averagetotal + input[i];
-		divider = i;
-	}
-	result = averagetotal / divider;
-}
+bool IsOdd(int i) { return ((i % 2) == 1); }
+bool IsNeg(int i) { return ((i) >= 0); }
 
 int main() {
-	vector<Particle> particles;
 
-	for (int i = 0; i < 10; ++i) {
-		particles.push_back(Particle(i, i % 2 == 0));
-	}
+	vector<string> colours{ "red", "green", "blue", "orange", "green", "orange", "black", "purple" };
 
-	dumpParticles("======== BEGIN", particles);
-
-	vector<Particle>::iterator newEnd;
-
-	newEnd = std::remove_if(particles.begin(), particles.end(), isDead);
-
-	particles.erase(newEnd, particles.end());
-
-	dumpParticles(" ======== EIND", particles);
-
-
-	string colours[] = { "red", "green", "blue", "orange", "green", "orange", "black", "purple" };
-
-	// verwijder alle dubbele
-	std::sort(std::begin(colours), std::end(colours));
+	//alle dubbele verwijderen
 	auto it = std::unique(std::begin(colours), std::end(colours));
 
-	double numbers[] = { 10, 324422, 6, -23, 234.5, 654.1, 3.1242, -9.23, 635, -53 };
+	//alle elementen UPPERCASE maken	
+	auto id = std::transform(std::begin(colours), std::end(colours), std::begin(colours), ::toupper);
+
+	//De vector in nieuwe vectoren splitsen, een met alles voor 'purple', een met alles erna
+	std::sort(std::begin(colours), std::end(colours));
+
+
+	vector<double> numbers{ 10, 324422, 6, -23, 234.5, 654.1, 3.1242, -9.23, 635, -53 };
 
 	//de som, het gemiddelde en het product van alle getallen berekenen
+	int sum = std::accumulate(numbers.begin(), numbers.end(), 0);
+	int product = std::accumulate(numbers.begin(), numbers.end(), 1, std::multiplies<int>());
+	int avg = sizeof(numbers) / sizeof(numbers[0]);
 
-	som(numbers);
-	product(numbers);
-	average(numbers);
+	cout << avg << endl;
+	cout << sum << endl;
+	cout << product << endl;
+
+	//alle negatieve elementen verwijderen
+	auto ne = std::remove_if(std::begin(numbers), std::end(numbers), IsOdd);
+
+	//voor alle elementen bepalen of ze even of oneven zijn
+	auto od = std::remove_if(std::begin(numbers), std::end(numbers), IsNeg);
 
 	return 0;
 }
