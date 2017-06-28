@@ -4,6 +4,8 @@
 #include <functional>
 #include <string>
 #include <numeric>
+#include <cctype>
+
 
 using namespace std;
 bool IsOdd(int i) { return ((i % 2) == 1); }
@@ -16,8 +18,8 @@ int main() {
 	//alle dubbele verwijderen
 	auto it = std::unique(std::begin(colours), std::end(colours));
 
-	//alle elementen UPPERCASE maken	
-	auto id = std::transform(std::begin(colours), std::end(colours), std::begin(colours), ::toupper);
+	//alle elementen UPPERCASE 
+    auto id = std::transform(colours.begin(), colours.end(), colours.begin(), std::toupper);
 
 	//De vector in nieuwe vectoren splitsen, een met alles voor 'purple', een met alles erna
 	std::sort(std::begin(colours), std::end(colours));
