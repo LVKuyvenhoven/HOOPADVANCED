@@ -13,13 +13,14 @@ bool IsNeg(int i) { return ((i) >= 0); }
 
 int main() {
 
-	vector<string> colours{ "red", "green", "blue", "orange", "green", "orange", "black", "purple" };
+	string colours = ("red", "green", "blue", "orange", "green", "orange", "black", "purple");
 
 	//alle dubbele verwijderen
 	auto it = std::unique(std::begin(colours), std::end(colours));
 
 	//alle elementen UPPERCASE 
-    auto id = std::transform(colours.begin(), colours.end(), colours.begin(), std::toupper);
+	auto id = std::transform(colours.begin(), colours.end(), colours.begin(),
+		[](unsigned char c) { return std::toupper(c);  });
 
 	//De vector in nieuwe vectoren splitsen, een met alles voor 'purple', een met alles erna
 	std::sort(std::begin(colours), std::end(colours));
